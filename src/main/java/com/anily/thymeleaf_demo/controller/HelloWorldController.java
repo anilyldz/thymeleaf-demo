@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloWorldController {
@@ -26,6 +27,18 @@ public class HelloWorldController {
         name = name.toUpperCase();
 
         String message = "Hello " + name;
+
+        model.addAttribute("message", message);
+
+        return "helloWorld";
+    }
+
+    @RequestMapping("/makeUpperCaseVersionTwo")
+    public String makeUpperCaseVersionTwo(@RequestParam("studentName") String studentName, Model model) {
+
+        studentName = studentName.toUpperCase();
+
+        String message = "Hey " + studentName;
 
         model.addAttribute("message", message);
 
